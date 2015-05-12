@@ -1,5 +1,5 @@
 var ServerActionCreators = require('../actions/ServerActionCreators.react.jsx');
-var SmallConstants = require('../constants/SmallConstants.js');
+var ReactNotesConstants = require('../constants/ReactNotesConstants.js');
 var request = require('superagent');
 
 function _getErrors(res) {
@@ -14,7 +14,7 @@ function _getErrors(res) {
   return errorMsgs;
 }
 
-var APIEndpoints = SmallConstants.APIEndpoints;
+var APIEndpoints = ReactNotesConstants.APIEndpoints;
 
 module.exports = {
 
@@ -57,43 +57,43 @@ module.exports = {
       });
   },
 
-  loadStories: function() {
-    request.get(APIEndpoints.STORIES)
+  loadNotes: function() {
+    request.get(APIEndpoints.Notes)
       .set('Accept', 'application/json')
       .set('Authorization', sessionStorage.getItem('accessToken'))
       .end(function(error, res){
         if (res) {
           json = JSON.parse(res.text);
-          ServerActionCreators.receiveStories(json);
+          ServerActionCreators.receiveNotes(json);
         }
       });
   },
 
-  loadStory: function(storyId) {
-    request.get(APIEndpoints.STORIES + '/' + storyId)
+  loadNote: function(noteId) {
+    request.get(APIEndpoints.Notes + '/' + noteId)
       .set('Accept', 'application/json')
       .set('Authorization', sessionStorage.getItem('accessToken'))
       .end(function(error, res){
         if (res) {
           json = JSON.parse(res.text);
-          ServerActionCreators.receiveStory(json);
+          ServerActionCreators.receiveNote(json);
         }
       });
   },
 
-  createStory: function(title, body) {
-    request.post(APIEndpoints.STORIES)
+  createNote: function(title, body) {
+    request.post(APIEndpoints.Notes)
       .set('Accept', 'application/json')
       .set('Authorization', sessionStorage.getItem('accessToken'))
-      .send({ story: { title: title, body: body } })
+      .send({ note: { title: title, body: body } })
       .end(function(error, res){
         if (res) {
           if (res.error) {
             var errorMsgs = _getErrors(res);
-            ServerActionCreators.receiveCreatedStory(null, errorMsgs);
+            ServerActionCreators.receiveCreatedNote(null, errorMsgs);
           } else {
             json = JSON.parse(res.text);
-            ServerActionCreators.receiveCreatedStory(json, null);
+            ServerActionCreators.receiveCreatedNote(json, null);
           }
         }
       });

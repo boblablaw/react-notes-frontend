@@ -1,7 +1,7 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
+var ReactNotesAppDispatcher = require('../dispatcher/ReactNotesAppDispatcher.js');
+var ReactNotesConstants = require('../constants/ReactNotesConstants.js');
 var SessionStore = require('../stores/SessionStore.react.jsx');
-var StoryStore = require('../stores/StoryStore.react.jsx');
+var NoteStore = require('../stores/NoteStore.react.jsx');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
@@ -10,10 +10,10 @@ var routes = require('../routes.jsx');
 
 var router = Router.create({
   routes: routes,
-  location: null // Router.HistoryLocation
+  location: null // Router.HinoteLocation
 });
 
-var ActionTypes = SmallConstants.ActionTypes;
+var ActionTypes = ReactNotesConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 var RouteStore = assign({}, EventEmitter.prototype, {
@@ -39,10 +39,10 @@ var RouteStore = assign({}, EventEmitter.prototype, {
   }
 });
 
-RouteStore.dispatchToken = SmallAppDispatcher.register(function(payload) {
-  SmallAppDispatcher.waitFor([
+RouteStore.dispatchToken = ReactNotesAppDispatcher.register(function(payload) {
+  ReactNotesAppDispatcher.waitFor([
     SessionStore.dispatchToken,
-    StoryStore.dispatchToken
+    NoteStore.dispatchToken
   ]);
 
   var action = payload.action;

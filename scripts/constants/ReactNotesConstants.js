@@ -1,13 +1,13 @@
 var keyMirror = require('keymirror');
 
-var APIRoot = "http://localhost:3000";
+var APIRoot = "http://localhost:3002";
 
 module.exports = {
 
   APIEndpoints: {
     LOGIN:          APIRoot + "/v1/login",
     REGISTRATION:   APIRoot + "/v1/users",
-    STORIES:        APIRoot + "/v1/stories"
+    Notes:        APIRoot + "/v1/notes"
   },
 
   PayloadSources: keyMirror({
@@ -23,8 +23,8 @@ module.exports = {
     // Routes
     REDIRECT: null,
 
-    LOAD_STORIES: null,
-    RECEIVE_STORIES: null,
+    LOAD_Notes: null,
+    RECEIVE_Notes: null,
     LOAD_STORY: null,
     RECEIVE_STORY: null,
     CREATE_STORY: null,

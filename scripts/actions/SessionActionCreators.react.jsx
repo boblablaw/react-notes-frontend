@@ -1,13 +1,13 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
+var ReactNotesAppDispatcher = require('../dispatcher/ReactNotesAppDispatcher.js');
+var ReactNotesConstants = require('../constants/ReactNotesConstants.js');
 var WebAPIUtils = require('../utils/WebAPIUtils.js');
 
-var ActionTypes = SmallConstants.ActionTypes;
+var ActionTypes = ReactNotesConstants.ActionTypes;
 
 module.exports = {
 
   signup: function(email, username, password, passwordConfirmation) {
-    SmallAppDispatcher.handleViewAction({
+    ReactNotesAppDispatcher.handleViewAction({
       type: ActionTypes.SIGNUP_REQUEST,
       email: email,
       username: username,
@@ -18,7 +18,7 @@ module.exports = {
   },
 
   login: function(email, password) {
-    SmallAppDispatcher.handleViewAction({
+    ReactNotesAppDispatcher.handleViewAction({
       type: ActionTypes.LOGIN_REQUEST,
       email: email,
       password: password
@@ -27,7 +27,7 @@ module.exports = {
   },
 
   logout: function() {
-    SmallAppDispatcher.handleViewAction({
+    ReactNotesAppDispatcher.handleViewAction({
       type: ActionTypes.LOGOUT
     });
   }

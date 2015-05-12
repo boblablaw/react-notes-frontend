@@ -1,9 +1,9 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
+var ReactNotesAppDispatcher = require('../dispatcher/ReactNotesAppDispatcher.js');
+var ReactNotesConstants = require('../constants/ReactNotesConstants.js');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
-var ActionTypes = SmallConstants.ActionTypes;
+var ActionTypes = ReactNotesConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 // Load an access token from the session storage, you might want to implement
@@ -44,7 +44,7 @@ var SessionStore = assign({}, EventEmitter.prototype, {
 
 });
 
-SessionStore.dispatchToken = SmallAppDispatcher.register(function(payload) {
+SessionStore.dispatchToken = ReactNotesAppDispatcher.register(function(payload) {
   var action = payload.action;
 
   switch(action.type) {

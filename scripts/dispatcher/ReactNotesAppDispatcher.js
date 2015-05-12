@@ -1,10 +1,10 @@
-var SmallConstants = require('../constants/SmallConstants.js');
+var ReactNotesConstants = require('../constants/ReactNotesConstants.js');
 var Dispatcher = require('flux').Dispatcher;
 var assign = require('object-assign');
 
-var PayloadSources = SmallConstants.PayloadSources;
+var PayloadSources = ReactNotesConstants.PayloadSources;
 
-var SmallAppDispatcher = assign(new Dispatcher(), {
+var ReactNotesAppDispatcher = assign(new Dispatcher(), {
 
   handleServerAction: function(action) {
     var payload = {
@@ -23,5 +23,5 @@ var SmallAppDispatcher = assign(new Dispatcher(), {
   }
 });
 
-module.exports = SmallAppDispatcher;
+module.exports = ReactNotesAppDispatcher;
 

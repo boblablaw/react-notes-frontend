@@ -11,7 +11,7 @@ function getStateFromStores() {
   };
 }
 
-var SmallApp = React.createClass({
+var ReactNotesApp = React.createClass({
 
   getInitialState: function() {
     return getStateFromStores();
@@ -42,5 +42,5 @@ var SmallApp = React.createClass({
 
 });
 
-module.exports = SmallApp;
+module.exports = ReactNotesApp;
 

@@ -1,17 +1,17 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
+var ReactNotesAppDispatcher = require('../dispatcher/ReactNotesAppDispatcher.js');
+var ReactNotesConstants = require('../constants/ReactNotesConstants.js');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var WebAPIUtils = require('../utils/WebAPIUtils.js');
 
-var ActionTypes = SmallConstants.ActionTypes;
+var ActionTypes = ReactNotesConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
-var _stories = [];
+var _notes = [];
 var _errors = [];
-var _story = { title: "", body: "", user: { username: "" } };
+var _note = { title: "", body: "", user: { username: "" } };
 
-var StoryStore = assign({}, EventEmitter.prototype, {
+var NoteStore = assign({}, EventEmitter.prototype, {
 
   emitChange: function() {
     this.emit(CHANGE_EVENT);
@@ -25,12 +25,12 @@ var StoryStore = assign({}, EventEmitter.prototype, {
     this.removeListener(CHANGE_EVENT, callback);
   },
 
-  getAllStories: function() {
-    return _stories;
+  getAllNotes: function() {
+    return _notes;
   },
 
-  getStory: function() {
-    return _story;
+  getNote: function() {
+    return _note;
   },
 
   getErrors: function() {
@@ -39,41 +39,41 @@ var StoryStore = assign({}, EventEmitter.prototype, {
 
 });
 
-StoryStore.dispatchToken = SmallAppDispatcher.register(function(payload) {
+NoteStore.dispatchToken = ReactNotesAppDispatcher.register(function(payload) {
   var action = payload.action;
 
   switch(action.type) {
     
-    case ActionTypes.RECEIVE_STORIES:
-      _stories = action.json.stories;
-      StoryStore.emitChange();
+    case ActionTypes.RECEIVE_Notes:
+      _notes = action.json.notes;
+      NoteStore.emitChange();
       break;
 
     case ActionTypes.RECEIVE_CREATED_STORY:
       if (action.json) {
-        _stories.unshift(action.json.story);
+        _notes.unshift(action.json.note);
         _errors = [];
       }
       if (action.errors) {
         _errors = action.errors;
       }
-      StoryStore.emitChange();
+      NoteStore.emitChange();
       break;
     
     case ActionTypes.RECEIVE_STORY:
       if (action.json) {
-        _story = action.json.story;
+        _note = action.json.note;
         _errors = [];
       }
       if (action.errors) {
         _errors = action.errors;
       }
-      StoryStore.emitChange();
+      NoteStore.emitChange();
       break;
   }
 
   return true;
 });
 
-module.exports = StoryStore;
+module.exports = NoteStore;
 

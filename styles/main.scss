@@ -14,11 +14,11 @@ body {
   background-color: #ffffff;
 }
 
-.new-story {
+.new-note {
   margin-top: 20px;
 }
 
-.new-story__title {
+.new-note__title {
   input {
    border: none;
    box-shadow: none;
@@ -26,25 +26,25 @@ body {
   }
 }
 
-.new-story__body {
+.new-note__body {
   textarea {
    background-color: #fafafa;
    border: none;
    box-shadow: none;
   }
 }
-.new-story__submit {
+.new-note__submit {
 
 }
 
-.story {
+.note {
   list-style: none;
   padding: 10px;
   margin-top: 10px;
   font-family: 'Raleway', sans-serif;
 }
 
-.story__title {
+.note__title {
   text-decoration: none;
   font-weight: 700;
   font-size: rem-calc(24);
@@ -53,20 +53,20 @@ body {
   }
 }
 
-.story__body {
+.note__body {
   font-weight: 400;
   font-size: rem-calc(14);
   color: #333;
   font-style: italic;
 }
 
-.story__user {
+.note__user {
   font-weight: 400;
   font-size: rem-calc(12);
   color: #2E8BA9;
 }
 
-.story__date {
+.note__date {
   color: #aaa;
   font-size: rem-calc(12);
 }

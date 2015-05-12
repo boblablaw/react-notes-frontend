@@ -1,34 +1,34 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
+var ReactNotesAppDispatcher = require('../dispatcher/ReactNotesAppDispatcher.js');
+var ReactNotesConstants = require('../constants/ReactNotesConstants.js');
 
-var ActionTypes = SmallConstants.ActionTypes;
+var ActionTypes = ReactNotesConstants.ActionTypes;
 
 module.exports = {
 
   receiveLogin: function(json, errors) {
-    SmallAppDispatcher.handleServerAction({
+    ReactNotesAppDispatcher.handleServerAction({
       type: ActionTypes.LOGIN_RESPONSE,
       json: json,
       errors: errors
     });
   },
 
-  receiveStories: function(json) {
-    SmallAppDispatcher.handleServerAction({
-      type: ActionTypes.RECEIVE_STORIES,
+  receiveNotes: function(json) {
+    ReactNotesAppDispatcher.handleServerAction({
+      type: ActionTypes.RECEIVE_Notes,
       json: json
     });
   },
 
-  receiveStory: function(json) {
-    SmallAppDispatcher.handleServerAction({
+  receiveNote: function(json) {
+    ReactNotesAppDispatcher.handleServerAction({
       type: ActionTypes.RECEIVE_STORY,
       json: json
     });
   },
   
-  receiveCreatedStory: function(json, errors) {
-    SmallAppDispatcher.handleServerAction({
+  receiveCreatedNote: function(json, errors) {
+    ReactNotesAppDispatcher.handleServerAction({
       type: ActionTypes.RECEIVE_CREATED_STORY,
       json: json,
       errors: errors

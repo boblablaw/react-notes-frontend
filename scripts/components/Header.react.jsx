@@ -33,7 +33,7 @@ var Header = React.createClass({
 
     var leftNav = this.props.isLoggedIn ? (
       <ul className="left">
-        <li><Link to="new-story">New story</Link></li>
+        <li><Link to="new-note">New note</Link></li>
       </ul>
     ) : (
       <div></div>

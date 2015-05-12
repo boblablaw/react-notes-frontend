@@ -3,21 +3,21 @@ var Router = require('react-router');
 var Route = Router.Route;
 var DefaultRoute = Router.DefaultRoute;
 
-var SmallApp = require('./components/SmallApp.react.jsx');
+var ReactNotesApp = require('./components/ReactNotesApp.react.jsx');
 var LoginPage = require('./components/session/LoginPage.react.jsx');
-var StoriesPage = require('./components/stories/StoriesPage.react.jsx');
-var StoryPage = require('./components/stories/StoryPage.react.jsx');
-var StoryNew = require('./components/stories/StoryNew.react.jsx');
+var NotesPage = require('./components/notes/NotesPage.react.jsx');
+var NotePage = require('./components/notes/NotePage.react.jsx');
+var NoteNew = require('./components/notes/NoteNew.react.jsx');
 var SignupPage = require('./components/session/SignupPage.react.jsx');
 
 module.exports = (
-  <Route name="app" path="/" handler={SmallApp}>
-    <DefaultRoute handler={StoriesPage} />
+  <Route name="app" path="/" handler={ReactNotesApp}>
+    <DefaultRoute handler={NotesPage} />
     <Route name="login" path="/login" handler={LoginPage}/>
     <Route name="signup" path="/signup" handler={SignupPage}/>
-    <Route name="stories" path="/stories" handler={StoriesPage}/>
-    <Route name="story" path="/stories/:storyId" handler={StoryPage} />
-    <Route name="new-story" path="/story/new" handler={StoryNew}/>
+    <Route name="notes" path="/notes" handler={NotesPage}/>
+    <Route name="note" path="/notes/:noteId" handler={NotePage} />
+    <Route name="new-note" path="/note/new" handler={NoteNew}/>
   </Route>
 );
 
